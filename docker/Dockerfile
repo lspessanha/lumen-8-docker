@@ -1,7 +1,7 @@
 FROM ubuntu:20.04
 
 RUN apt-get update
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y wget curl nano htop git unzip bzip2 software-properties-common locales tzdata
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y curl git unzip bzip2 software-properties-common locales tzdata
 
 ENV TZ=America/Fortaleza
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone

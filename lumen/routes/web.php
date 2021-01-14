@@ -14,6 +14,5 @@
 */
 
 $router->get('/', function () use ($router) {
-    return date('Y-m-d H:i:s');
-    // return $router->app->version();
+    return $router->app->version();
 });
