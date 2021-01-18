@@ -4,6 +4,7 @@ services:
     image: mysql:8.0
     container_name: host-mysql-8
     environment:
+      MYSQL_DATABASE: 'homestead'
       MYSQL_ROOT_PASSWORD: mypass
       TZ: 'America/Fortaleza'
     ports:
@@ -22,14 +23,14 @@ services:
       APP_URL: 'http://localhost'
       APP_TIMEZONE: 'America/Fortaleza'
       DB_CONNECTION: 'mysql'
-      DB_DATABASE: 'database_name'
+      DB_DATABASE: 'homestead'
       DB_HOST: 'host-mysql-8'
       DB_PORT: '3306'
       DB_USERNAME: 'root'
       DB_PASSWORD: 'mypass'
     volumes:
       - ./lumen:/var/www/html
-    command: bash -c "/usr/bin/env |grep 'APP\|DB' > /var/www/html/.env && /usr/bin/supervisord"
+    command: bash -c "/usr/bin/env |grep 'APP\|DB\|TZ' > /var/www/html/.env && /usr/bin/supervisord"
     ports:
       - "80:80"
     depends_on:
